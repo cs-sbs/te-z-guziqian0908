@@ -8,17 +8,21 @@ public class NumberFeature {
         int result = 0; // 输出结果
         Scanner in = new Scanner(System.in);
         inputNumber = in.nextInt();
-        int binaryValue = 1;
+        
         // 你的代码逻辑
+ digital_eigenvalue(inputNumber, result);
+    }
+    public static void digital_eigenvalue(int inputNumber, int result) {
+        int number;
+        int digit_position = 1;
+        int binary_bit_value = 1;
         while (inputNumber > 0) {
-            int digit = inputNumber % 10; 
-            int position = (int) (Math.log10(inputNumber) + 1);  
-            inputNumber /= 10;
-            if ((digit % 2 == 1 && position % 2 == 1) || (digit % 2 == 0 && position % 2 == 0)) {
-                result += binaryValue;  
-            }
-
-            binaryValue *= 2;  
+            number = inputNumber % 10;
+            inputNumber = inputNumber / 10;
+            if (number % 2 == digit_position % 2)
+                result += binary_bit_value;
+            binary_bit_value *= 2;
+            digit_position++;
         }
         System.out.println(result);
     }
